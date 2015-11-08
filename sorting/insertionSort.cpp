@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 std::vector<int> insertionSortVector(std::vector<int> A)
 {
@@ -28,31 +29,56 @@ int printVect(std::vector<int> A)
     return 0;
 }
 
-int insertionSort(int A[], int sizeA)
+void insertionSort(int A[], int sizeA)
 {
     using namespace std;
     for (int j=1; j<sizeA ;j++)
     {
         int key = A[j];
         int i = j-1;
-        while (i >= 0 and A[i] > key)
+        while (i >= 0 && A[i] > key)
         {
             A[i + 1] = A[i];
             i = i - 1;
         }
         A[i + 1] = key;
     }
-    return *A;
 } 
 
 int printArray(int A[], int sizeA)
 {
-    using namespace std;;
+    using namespace std;
     for (int i=0; i<sizeA; i++)
     {
         cout << A[i] << endl;
     }
     return 0;
+}
+
+int printStringArray(std::string A[], int sizeA)
+{
+    using namespace std;
+    for (int i=0; i<sizeA; i++)
+    {
+        cout << A[i] << endl;
+    }
+    return 0;
+}
+
+void insertionSortString(std::string A[], int sizeA)
+{
+    using namespace std;
+    for (int j=1; j<sizeA;j++)
+    {
+        std::string key = A[j];
+        int i = j-1;
+        while (i >= 0 and A[i].compare(key) > 0) //A[i] > key)
+        {
+            A[i + 1] = A[i];
+            i = i - 1;
+        }
+        A[i + 1] = key;
+    }
 }
 
 int main()
@@ -68,5 +94,11 @@ int main()
     insertionSort(p, sizeP);
     printArray(p, sizeP);
    
+    string mystring[] = {"zaxbvg", "snoof", "bunnyy", "love"};
+    int sizeS =  sizeof(mystring) / sizeof(*mystring);
+    printStringArray(mystring,sizeS);
+    insertionSortString(mystring, sizeS);
+        printStringArray(mystring,sizeS);
+
     return 0;
 }
